@@ -3,7 +3,7 @@ name = "random-people-service"
 version = "0.1.0"
 description = "Service for loading and displaying random people"
 readme = "README.md"
-packages = [{ include = "app" }]
+packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
