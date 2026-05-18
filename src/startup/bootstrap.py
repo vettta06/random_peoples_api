@@ -5,7 +5,6 @@ from src.db.session import AsyncSessionLocal
 from src.services.people_service import PeopleService
 from src.services.random_data_client import RandomDataClient
 
-
 logger = structlog.get_logger(__name__)
 
 

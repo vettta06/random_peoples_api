@@ -8,7 +8,7 @@ from src.services.people_service import PeopleService
 
 @pytest.mark.asyncio
 async def test_load_initial_people() -> None:
-    """Проверить загрузку начального списка пользователей."""
+    """Проверка загрузки начального списка пользователей."""
 
     mock_raw_data = [
         {

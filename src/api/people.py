@@ -1,14 +1,9 @@
-from fastapi import APIRouter
-from fastapi import Depends
-from fastapi import HTTPException
-from fastapi import Query
-from fastapi import status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 
 from src.api.dependencies import get_people_service
 from src.exceptions import PersonNotFoundError
 from src.schemas.person import Person as PersonSchema
 from src.services.people_service import PeopleService
-
 
 router = APIRouter(tags=["People"])
 

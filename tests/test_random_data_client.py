@@ -7,7 +7,7 @@ from src.services.random_data_client import RandomDataClient
 
 @pytest.mark.asyncio
 async def test_get_people() -> None:
-    """Проверить получение пользователей."""
+    """Проверка получения пользователей."""
 
     mock_data = [{"FirstName": "John"}]
     client = RandomDataClient()
