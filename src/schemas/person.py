@@ -1,9 +1,7 @@
 from datetime import datetime
 from uuid import UUID
 
-from pydantic import BaseModel
-from pydantic import ConfigDict
-from pydantic import EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr
 
 
 class Person(BaseModel):

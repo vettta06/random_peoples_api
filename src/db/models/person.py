@@ -1,9 +1,7 @@
 from uuid import UUID
 
-from sqlalchemy import DateTime
-from sqlalchemy import String
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
+from sqlalchemy import DateTime, String
+from sqlalchemy.orm import Mapped, mapped_column
 
 from src.db.session import Base
 

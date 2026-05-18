@@ -1,14 +1,10 @@
 import structlog
-from httpx import AsyncClient
-from httpx import HTTPError
-from httpx import Response
-from httpx import Timeout
+from httpx import AsyncClient, HTTPError, Response, Timeout
 
 from src.core.config import config
 from src.services.interfaces.random_data_client import (
     IRandomDataClient,
 )
-
 
 logger = structlog.get_logger(__name__)
 

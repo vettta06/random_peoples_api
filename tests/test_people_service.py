@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import AsyncMock
+
+import pytest
 
 from src.db.models.person import Person
 from src.services.people_service import PeopleService

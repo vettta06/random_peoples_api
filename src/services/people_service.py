@@ -1,5 +1,4 @@
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from uuid import uuid4
 
 import structlog
@@ -15,7 +14,6 @@ from src.services.interfaces.people_service import (
 from src.services.interfaces.random_data_client import (
     IRandomDataClient,
 )
-
 
 logger = structlog.get_logger(__name__)
 
