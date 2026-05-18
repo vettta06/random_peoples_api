@@ -8,6 +8,7 @@ from pydantic import EmailStr
 
 class Person(BaseModel):
     """Схема пользователя."""
+
     id: UUID
     gender: str
     first_name: str

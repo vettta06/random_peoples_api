@@ -36,21 +36,14 @@ class PersonRepository(IPersonRepository):
     ) -> Person | None:
         """Получить пользователя по идентификатору."""
 
-        query = (
-            select(Person)
-            .where(Person.id == UUID(person_id))
-        )
+        query = select(Person).where(Person.id == UUID(person_id))
         result = await self._session.execute(query)
         return result.scalar_one_or_none()
 
     async def get_random(self) -> Person | None:
         """Получить случайного пользователя."""
 
-        query = (
-            select(Person)
-            .order_by(func.random())
-            .limit(1)
-        )
+        query = select(Person).order_by(func.random()).limit(1)
         result = await self._session.execute(query)
         return result.scalar_one_or_none()
 
@@ -61,11 +54,7 @@ class PersonRepository(IPersonRepository):
     ) -> list[Person]:
         """Получить список пользователей."""
 
-        query = (
-            select(Person)
-            .limit(limit)
-            .offset(offset)
-        )
+        query = select(Person).limit(limit).offset(offset)
         result = await self._session.execute(query)
         return list(result.scalars().all())
 

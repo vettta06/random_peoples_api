@@ -1,3 +1,4 @@
+from datetime import UTC
 from datetime import datetime
 from uuid import uuid4
 
@@ -24,7 +25,7 @@ async def test_create_person() -> None:
             phone="+123456789",
             email="john@example.com",
             city="Amsterdam",
-            created_at=datetime.utcnow(),
+            created_at=datetime.now(UTC),
         )
         await repository.create_many([person])
 

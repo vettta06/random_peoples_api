@@ -1,4 +1,3 @@
-from datetime import datetime
 from uuid import UUID
 
 from sqlalchemy import DateTime
@@ -21,7 +20,6 @@ class Person(Base):
     phone: Mapped[str] = mapped_column(String(255), nullable=False)
     email: Mapped[str] = mapped_column(String(255), nullable=False)
     city: Mapped[str] = mapped_column(String(255), nullable=False)
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime,
-        nullable=False,
+    created_at = mapped_column(
+        DateTime(timezone=True),
     )
