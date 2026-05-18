@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
+from fastapi import Query
 from fastapi import status
 
 from src.api.dependencies import get_people_service
@@ -17,11 +18,13 @@ router = APIRouter(tags=["People"])
     response_model=list[PersonSchema],
 )
 async def get_people(
+    page: int = Query(default=1, ge=1, description="Номер страницы"),
+    size: int = Query(default=50, ge=1, le=100, description="Размер страницы"),
     service: PeopleService = Depends(get_people_service),
 ) -> list[PersonSchema]:
-    """Получить список пользователей."""
+    """Получить список пользователей с поддержкой пагинации."""
 
-    db_people = await service.get_people(page=1, size=50)
+    db_people = await service.get_people(page=page, size=size)
     return [PersonSchema.model_validate(person) for person in db_people]
 
 

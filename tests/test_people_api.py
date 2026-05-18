@@ -28,12 +28,11 @@ async def test_get_people_endpoint_success() -> None:
             created_at=datetime.now(),
         )
     ]
-
-    result = await get_people(service=mock_service)
+    result = await get_people(page=2, size=20, service=mock_service)
 
     assert len(result) == 1
     assert result[0].first_name == "John"
-    mock_service.get_people.assert_called_once_with(page=1, size=50)
+    mock_service.get_people.assert_called_once_with(page=2, size=20)
 
 
 @pytest.mark.asyncio
