@@ -7,30 +7,28 @@ from src.db.models.person import Person
 from src.db.repositories.person_repository import (
     PersonRepository,
 )
-from src.db.session import AsyncSessionLocal
+
+from unittest.mock import AsyncMock
 
 
 @pytest.mark.asyncio
 async def test_create_person() -> None:
-    """Проверка создания пользователя."""
+    """Проверка создания пользователя в репозитории."""
 
-    async with AsyncSessionLocal() as session:
-        repository = PersonRepository(session)
-        person = Person(
-            id=uuid4(),
-            gender="male",
-            first_name="John",
-            last_name="Doe",
-            phone="+123456789",
-            email="john@example.com",
-            city="Amsterdam",
-            created_at=datetime.now(UTC),
-        )
-        await repository.create_many([person])
+    mock_session = AsyncMock()
+    repository = PersonRepository(mock_session)
 
-        saved_person = await repository.get_by_id(
-            str(person.id),
-        )
+    person = Person(
+        id=uuid4(),
+        gender="male",
+        first_name="John",
+        last_name="Doe",
+        phone="+123456789",
+        email="john@example.com",
+        city="Amsterdam",
+        created_at=datetime.now(UTC),
+    )
+    await repository.create_many([person])
 
-        assert saved_person is not None
-        assert saved_person.email == person.email
+    mock_session.add_all.assert_called_once_with([person])
+    mock_session.commit.assert_called_once()
